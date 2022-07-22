@@ -33,7 +33,7 @@ fn main() -> Result<(), Error>{
         });
 
         let datetime = Local::now();
-        let datetime_str = datetime.format("[%F %H%M%S%.f] ").to_string();
+        let datetime_str = datetime.format("[%F %H%M%S.%f] ").to_string();
 
         write_buf = [datetime_str, write_buf].concat();
         match f.write(write_buf.as_bytes()) {
@@ -61,7 +61,7 @@ fn create_logfile() -> Result<File, Error> {
         Err(e) => eprintln!("Error creating directory: {}", e),
     };
 
-    let log_name: String = datetime.format(&(dirpath + &"%F_%H%M%S%.f.log"))
+    let log_name: String = datetime.format(&(dirpath + &"%F_%H%M%S.%f.log"))
                                    .to_string();
     fs::File::create(log_name)
 }
