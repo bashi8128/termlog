@@ -33,7 +33,7 @@ fn main() -> Result<(), Error>{
         });
 
         let datetime = Local::now();
-        let datetime_str = datetime.format("[%F %H%M%S.%f] ").to_string();
+        let datetime_str = datetime.format("[%F %H:%M:%S.%f] ").to_string();
 
         write_buf = [datetime_str, write_buf].concat();
         match f.write(write_buf.as_bytes()) {
