@@ -19,6 +19,7 @@ fn main() -> Result<(), Error>{
         Err(e) => return Err(e),
     };
 
+    // Read a line from stdin and parse escape sequences in that line
     while reader.read_line(&mut read_buf).unwrap() > 0 {
         let mut write_buf = String::new();
         parser.parse(&read_buf.as_bytes(), |action| match action {
@@ -45,6 +46,7 @@ fn main() -> Result<(), Error>{
     Ok(())
 }
 
+/// Create log file under `~/log/YYYY/MM/DD`, with timestamp prefix
 fn create_logfile() -> Result<File, Error> {
     let datetime: DateTime<Local> = Local::now();
     let year: String = datetime.format("%Y").to_string();
