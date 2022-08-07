@@ -652,6 +652,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "term_size"
+version = "0.3.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1e4129646ca0ed8f45d09b929036bafad5377103edd06e50bf574b353d2b08d9"
+dependencies = [
+ "libc",
+ "winapi",
+]
+
+[[package]]
 name = "terminfo"
 version = "0.7.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -678,6 +688,7 @@ name = "termlog"
 version = "0.1.0"
 dependencies = [
  "chrono",
+ "term_size",
  "termwiz",
 ]
 
