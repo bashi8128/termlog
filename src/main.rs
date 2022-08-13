@@ -94,6 +94,10 @@ fn do_actions(actions: Vec<Action>, file: &mut BufWriter<File>, term_width: usiz
                     buffer.replace_range(cursor..cursor+1, "\t");
                     cursor += 1;
                 },
+                // Move cursor to the start of the line
+                ControlCode::CarriageReturn => {
+                    cursor = 0;
+                },
                 _ => {}
             },
             Action::CSI(csi) => match csi {
