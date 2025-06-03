@@ -17,9 +17,9 @@ pub fn do_actions(actions: Vec<Action>, file: &mut BufWriter<File>, term_width: 
         match action {
             // Print a single character to the buffer by replacing it with a space
             Action::Print(c) => {
-                // FIXME: Issue#5: Panic may occur here once 'c' is a multibyte character
-                buffer.replace_range(cursor..cursor + 1, &c.to_string());
-                cursor += 1;
+                let byte_len = c.len_utf8();
+                buffer.replace_range(cursor..cursor + byte_len, &c.to_string());
+                cursor += byte_len;
             }
             Action::Control(ctrl_code) => {
                 cursor = reflect_control_codes(ctrl_code, &mut buffer, cursor);
