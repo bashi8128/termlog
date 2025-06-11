@@ -36,7 +36,7 @@ pub fn do_actions(actions: Vec<Action>, file: &mut BufWriter<File>, term_width: 
     buffer = buffer.trim().to_string();
     buffer = [datetime_str, buffer].concat();
     buffer.push('\n');
-    match file.write(buffer.as_bytes()) {
+    match file.write_all(buffer.as_bytes()) {
         Ok(_) => {}
         Err(e) => eprintln!("Error in writing to file: {}", e),
     };
