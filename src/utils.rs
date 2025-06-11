@@ -58,7 +58,7 @@ pub fn create_logfile() -> Result<File, Error> {
     };
 
     let log_name: String = datetime
-        .format(&(dirpath + &"%F_%H%M%S.%f.log"))
+        .format(&(dirpath + "%F_%H%M%S.%f.log"))
         .to_string();
     fs::File::create(log_name)
 }

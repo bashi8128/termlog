@@ -29,7 +29,7 @@ fn main() -> Result<(), Error> {
     }
 
     while width > 0 {
-        let actions = parser.parse_as_vec(&read_buf.as_bytes());
+        let actions = parser.parse_as_vec(read_buf.as_bytes());
         utils::do_actions(actions, &mut f, width);
         read_buf = String::new();
         match reader.read_line(&mut read_buf) {
